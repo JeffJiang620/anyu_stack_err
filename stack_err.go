@@ -1,4 +1,4 @@
-package errors
+package stackErr
 
 import "runtime"
 
