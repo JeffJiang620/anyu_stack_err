@@ -42,3 +42,7 @@ func WithStack(err error, skip int) error {
 		return err
 	}
 }
+
+func StackErr(err error) error {
+	return WithStack(err, 2)
+}
