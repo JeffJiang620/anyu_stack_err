@@ -4,36 +4,36 @@ import "runtime"
 
 const DefaultErrorStackSkip = 1
 
-type ErrorWithStack struct {
+type errorWithStack struct {
 	err  error
 	file string
 	line int
 }
 
-func (e ErrorWithStack) Error() string {
+func (e errorWithStack) Error() string {
 	return e.err.Error()
 }
 
-func (e ErrorWithStack) Unwrap() error {
+func (e errorWithStack) Unwrap() error {
 	return e.err
 }
 
-func (e ErrorWithStack) File() string {
+func (e errorWithStack) File() string {
 	return e.file
 }
 
-func (e ErrorWithStack) Line() int {
+func (e errorWithStack) Line() int {
 	return e.line
 }
 
 func WithStack(err error, skip int) error {
 	switch err.(type) {
-	case ErrorWithStack:
+	case errorWithStack:
 		return err
 	default:
 		_, file, line, ok := runtime.Caller(skip)
 		if ok {
-			return ErrorWithStack{
+			return errorWithStack{
 				err:  err,
 				file: file,
 				line: line,
