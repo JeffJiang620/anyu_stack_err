@@ -1,3 +1,3 @@
-module github.com/JeffJiang620/anyu_stack_err
+module github.com/anyufly/stack_err
 
 go 1.19
