@@ -1,4 +1,4 @@
-package stackErr
+package stackerr
 
 import "runtime"
 
